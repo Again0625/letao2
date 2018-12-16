@@ -71,15 +71,26 @@ $(function () {
                     location.href = 'index.html'
                 }
                 if (info.error === 1000) {
-                    alert('用户名不存在')
+                    // alert('用户名不存在')
+                    // updateStatus
+                    // 参数1:字段名称
+                    // 参数2:校验状态
+                    // 参数3：校验规则,可以设置提示文本
+                    $('#form').data('bootstrapValidator').updateStatus("username", "INVALID", "callback")
 
                 }
                 if (info.error === 1001) {
-                    alert('密码错误')
+                    // alert('密码错误')
+                    $("#form").data('bootstrapValidator').updateStatus("password", "INVALID", "callback")
                 }
             }
 
         })
+    })
+
+    // 3.重置功能实现
+    $("[type='reset']").click(function () {
+        $('#form').data("bootstrapValidator").resetForm()
     })
 
 })
