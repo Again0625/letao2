@@ -19,3 +19,42 @@ $(document).ajaxStop(function () {
         NProgress.done();
     }, 500)
 })
+
+// 二级分类切换功能
+$(function () {
+    // 注册事件完成公共功能
+    // 功能1: 左侧二级导航切换效果
+    $('.lt_aside .category').click(function () {
+        $('.lt_aside .child').stop().slideToggle();
+    })
+
+    // 功能2: 左侧菜单切换效果
+    $('.icon_left').click(function () {
+        $('.lt_aside').toggleClass('hidemenu');
+        $('.lt_topbar').toggleClass('hidemenu');
+        $('.lt_main').toggleClass('hidemenu');
+    })
+
+    // 功能3:退出功能
+    // 给右侧按钮，添加点击事件
+    $('.icon_right').click(function () {
+        $('#logoutModal').modal('show')
+    });
+
+    // 给退出按钮，添加点击事件，需要在退出是，销毁当前用户的登陆状态
+    $('#logoutBtn').click(function () {
+        $.ajax({
+            type: 'get',
+            url: '/employee/employeeLogout',
+            dataType: 'json',
+            success: function (info) {
+                console.log(info);
+                if (info.success) {
+                    // 销毁登录状态成功
+                    location.href = "login.html";
+                }
+
+            }
+        })
+    })
+})

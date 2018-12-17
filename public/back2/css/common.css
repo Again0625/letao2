@@ -11,6 +11,10 @@ ul {
     padding: 0;
 }
 
+.red {
+    color: #A94442;
+}
+
 .lt_aside {
     background-color: #222D32;
     width: 180px;
@@ -19,6 +23,11 @@ ul {
     top: 0;
     left: 0;
     z-index: 999;
+    transition: all 1s;
+}
+
+.lt_aside.hidemenu {
+    left: -180px;
 }
 
 .lt_aside .brand {
@@ -61,10 +70,21 @@ ul {
     height: 40px;
     line-height: 40px;
     color: #fff;
+    border-left: 3px solid transparent;
+
+}
+
+.lt_aside .nav a.current {
+    border-left: 3px solid #006699;
+    background-color: #1D1F21;
 }
 
 .lt_aside .nav a i {
     margin-right: 6px;
+}
+
+.lt_aside .nav .child a {
+    padding-left: 60px;
 }
 
 /* 头部 */
@@ -73,6 +93,11 @@ ul {
     height: 1000px;
     padding-left: 180px;
     padding-top: 50px;
+    transition: all 1s;
+}
+
+.lt_main.hidemenu {
+    padding-left: 0;
 }
 
 .lt_topbar {
@@ -85,7 +110,11 @@ ul {
     top: 0;
     right: 0;
     padding-left: 180px;
+    transition: all 1s;
+}
 
+.lt_topbar.hidemenu {
+    padding-left: 0;
 }
 
 .lt_topbar .icon_left,
@@ -99,4 +128,11 @@ ul {
 
 .breadcrumb {
     margin-top: 20px;
+}
+
+.lt_content .echarts_1,
+.lt_content .echarts_2 {
+    width: 48%;
+    height: 600px;
+    background-color: aqua;
 }
